@@ -671,40 +671,8 @@ function setupSectionUnderlines() {
 }
 
 function setupHeaderScroll() {
-  const disableCompactHeaderOnTouch =
-    window.matchMedia &&
-    window.matchMedia("(max-width: 1024px), (pointer: coarse)").matches;
-
-  if (disableCompactHeaderOnTouch) {
-    body.classList.remove("is-scrolled");
-    return;
-  }
-
-  let ticking = false;
-  let isCompact = false;
-
-  const enterThreshold = 72;
-  const exitThreshold = 28;
-
-  const update = () => {
-    const y = window.scrollY || 0;
-    if (!isCompact && y > enterThreshold) {
-      isCompact = true;
-    } else if (isCompact && y < exitThreshold) {
-      isCompact = false;
-    }
-    body.classList.toggle("is-scrolled", isCompact);
-    ticking = false;
-  };
-
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(update);
-  };
-
-  update();
-  on(window, "scroll", onScroll, { passive: true });
+  // Keep header behavior stable across devices (no compact-on-scroll mode).
+  body.classList.remove("is-scrolled");
 }
 
 async function resolveBannerFiles() {

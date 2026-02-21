@@ -80,6 +80,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
   overflow-x: hidden;
   overflow-x: clip;
 }
