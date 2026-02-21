@@ -1,0 +1,12 @@
+
+
+- custom paws cursor
+- paw animation when clicking on buttons (a small transparent one)
+- Square design instead of rounded
+- date parts more splitted to get a better overview and table of conent for them?
+- opening the menus when hovering over sections should get a animation
+- add EN/DE support
+- custom fonts
+- dark/light mode, color design itself should be fern/dark green and kind of beige
+
+- edit pdf parts so theyre displayed direcxtly but if clicking on them it would open the current Vorschau window
