@@ -14,12 +14,16 @@
 .topline {
   background: var(--brand-strong);
   color: #f5f5ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 0.45rem 1rem;
+  padding: 0 1rem;
   font-size: 0.86rem;
+  line-height: 1;
   letter-spacing: 0.05em;
-  height: 40px;
-  max-height: 40px;
+  height: 34px;
+  max-height: 34px;
   overflow: hidden;
   overflow-x: clip;
   min-width: 0;
@@ -36,27 +40,18 @@
   align-items: center;
   padding: 0;
   overflow: hidden;
-  contain: layout paint;
-  min-width: 0;
 }
 
 .fact-marquee {
-  position: relative;
   display: block;
-  inline-size: 100%;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  max-width: 100%;
-  min-width: 0;
-  contain: layout paint size;
 }
 
 .fact-marquee__track {
-  display: flex;
-  width: max-content;
-  max-width: 100%;
-  min-width: 0;
+  display: inline-flex;
+  min-width: max-content;
   align-items: center;
   animation: facts-marquee var(--facts-duration, 52s) linear infinite;
   will-change: transform;
@@ -64,6 +59,7 @@
 
 .fact-marquee__group {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 0.85rem;
   padding-right: 1.15rem;
@@ -199,6 +195,16 @@
 
 .nav-toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0.35rem;
+}
+
+.nav-toggle .icon-glyph {
+  width: 18px;
+  height: 18px;
 }
 
 .nav-wrap {
@@ -327,7 +333,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   margin: 0;
   padding: 0.42rem;
   min-width: 250px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-m);
   background: var(--surface);
   box-shadow: var(--shadow-soft);
@@ -365,6 +371,58 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+.nav-drawer-head {
+  display: none;
+}
+
+.nav-drawer-foot {
+  display: none;
+}
+
+.nav-drawer-quick {
+  display: flex;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.nav-drawer-quick__icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+}
+
+.nav-drawer-quick__icon .icon-glyph {
+  width: 15px;
+  height: 15px;
+}
+
+.nav-drawer-close {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem;
+}
+
+.nav-drawer-close:hover,
+.nav-drawer-close:focus-visible {
+  border-color: var(--line-strong);
+  background: var(--surface-soft);
+}
+
+.nav-drawer-close .icon-glyph {
+  width: 14px;
+  height: 14px;
 }
 
 .hero {
@@ -2024,72 +2082,107 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   }
 
   .nav-wrap {
-    display: none;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 72;
+    width: min(78vw, 320px);
+    height: 100vh;
+    height: 100dvh;
+    margin-top: 0;
+    padding: max(env(safe-area-inset-top), 0.82rem) 0.7rem max(env(safe-area-inset-bottom), 0.9rem);
+    border-left: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: -14px 0 34px rgba(8, 12, 10, 0.22);
+    transform: translateX(104%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition:
+      transform 240ms ease,
+      opacity 200ms ease,
+      visibility 200ms ease;
   }
 
   .nav-wrap.open {
-    display: block;
-    margin-top: 0.72rem;
-    width: 100%;
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 0.48rem;
+  }
+
+  .nav-drawer-foot {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding-top: 0.58rem;
+    border-top: 1px solid var(--line);
   }
 
   .main-nav {
     flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
     align-items: stretch;
-    gap: 0.25rem;
+    justify-content: flex-start;
+    gap: 0.18rem;
   }
 
   .main-nav > li {
-    display: flex;
-    justify-content: center;
+    display: block;
     width: 100%;
   }
 
   .main-nav > li > a {
-    display: flex;
     width: fit-content;
     max-width: 100%;
-    margin-inline: auto;
-    border-radius: 0;
-    padding-left: 0;
-    padding-right: 0;
-    justify-content: center;
-    text-align: center;
+    margin: 0;
+    padding: 0.5rem 0.18rem 0.55rem;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .main-nav > li.has-dropdown {
-    display: grid;
-    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    column-gap: 0.16rem;
+    width: fit-content;
+    max-width: 100%;
   }
 
   .main-nav > li.has-dropdown::before {
-    content: "";
-    width: 44px;
-    height: 44px;
+    content: none;
   }
 
   .main-nav > li.has-dropdown > .nav-link--dropdown {
-    grid-column: 2;
     min-width: 0;
-    width: fit-content;
+    width: max-content;
     max-width: 100%;
-    justify-self: center;
-    margin-inline: 0;
     padding-left: 0;
   }
 
   .nav-dropdown-toggle {
-    grid-column: 3;
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-    justify-self: end;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    margin-left: 0.02rem;
+    flex: 0 0 auto;
+  }
+
+  .main-nav > li.has-dropdown > .submenu {
+    flex-basis: 100%;
+    width: 100%;
   }
 
   .rich-content a,
@@ -2136,6 +2229,21 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
     max-height: 22rem;
     padding-top: 0.42rem;
     padding-bottom: 0.42rem;
+  }
+
+  body.nav-drawer-open {
+    overflow: hidden;
+  }
+
+  main,
+  .site-footer {
+    transition: filter 220ms ease;
+  }
+
+  body.nav-drawer-open main,
+  body.nav-drawer-open .site-footer {
+    filter: blur(4px);
+    pointer-events: none;
   }
 }
 
