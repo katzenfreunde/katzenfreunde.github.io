@@ -26,136 +26,101 @@
   },
   {
     "file": "banner-06.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=6",
-    "bytes": 207598
-  },
-  {
-    "file": "banner-07.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=7",
     "bytes": 527643
   },
   {
-    "file": "banner-08.jpg",
+    "file": "banner-07.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=8",
     "bytes": 388544
   },
   {
-    "file": "banner-09.jpg",
+    "file": "banner-08.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=13",
     "bytes": 451709
   },
   {
-    "file": "banner-10.jpg",
+    "file": "banner-09.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=14",
     "bytes": 459724
   },
   {
-    "file": "banner-11.jpg",
+    "file": "banner-10.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=21",
     "bytes": 417752
   },
   {
-    "file": "banner-12.jpg",
+    "file": "banner-11.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=24",
     "bytes": 434312
   },
   {
-    "file": "banner-13.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=39",
-    "bytes": 453709
-  },
-  {
-    "file": "banner-14.jpg",
+    "file": "banner-12.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=40",
     "bytes": 218065
   },
   {
-    "file": "banner-15.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=41",
-    "bytes": 246972
-  },
-  {
-    "file": "banner-16.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=42",
-    "bytes": 273007
-  },
-  {
-    "file": "banner-17.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=43",
-    "bytes": 241368
-  },
-  {
-    "file": "banner-18.jpg",
+    "file": "banner-13.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=44",
     "bytes": 208247
   },
   {
-    "file": "banner-19.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=45",
-    "bytes": 219368
-  },
-  {
-    "file": "banner-20.jpg",
+    "file": "banner-14.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=46",
     "bytes": 208496
   },
   {
-    "file": "banner-21.jpg",
+    "file": "banner-15.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=47",
     "bytes": 308882
   },
   {
-    "file": "banner-22.jpg",
+    "file": "banner-16.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=49",
     "bytes": 399963
   },
   {
-    "file": "banner-23.jpg",
+    "file": "banner-17.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=50",
     "bytes": 311404
   },
   {
-    "file": "banner-24.jpg",
+    "file": "banner-18.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=51",
     "bytes": 324149
   },
   {
-    "file": "banner-25.jpg",
+    "file": "banner-19.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=53",
     "bytes": 341048
   },
   {
-    "file": "banner-26.jpg",
-    "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=54",
-    "bytes": 293215
-  },
-  {
-    "file": "banner-27.jpg",
+    "file": "banner-20.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=55",
     "bytes": 441488
   },
   {
-    "file": "banner-28.jpg",
+    "file": "banner-21.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=56",
     "bytes": 318094
   },
   {
-    "file": "banner-29.jpg",
+    "file": "banner-22.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=58",
     "bytes": 298299
   },
   {
-    "file": "banner-30.jpg",
+    "file": "banner-23.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=60",
     "bytes": 291493
   },
   {
-    "file": "banner-31.jpg",
+    "file": "banner-24.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=61",
     "bytes": 277739
   },
   {
-    "file": "banner-32.jpg",
+    "file": "banner-25.jpg",
     "source": "https://loremflickr.com/2200/950/stray,homeless,cat?lock=62",
     "bytes": 358046
   }

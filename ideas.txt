@@ -10,3 +10,6 @@
 - dark/light mode, color design itself should be fern/dark green and kind of beige
 
 - edit pdf parts so theyre displayed direcxtly but if clicking on them it would open the current Vorschau window
+
+
+You should now rename all the jpg/png files and give them proper names instead of numbers. The location and usage of the pictures should clatify a proper name for them.
