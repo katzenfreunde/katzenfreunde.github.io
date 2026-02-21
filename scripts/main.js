@@ -7,6 +7,7 @@ const body = document.body;
 const iconBase = new URL("/assets/icons/", window.location.origin);
 const bannerBase = new URL("/assets/banners/", window.location.origin);
 const THEME_OVERRIDE_KEY = "theme_override";
+let transientThemeOverride = null;
 
 const text = {
   tagline: "Wir helfen Katzen in Not",
@@ -389,16 +390,23 @@ function setupToplineFacts() {
 function readThemeOverride() {
   try {
     const value = sessionStorage.getItem(THEME_OVERRIDE_KEY);
-    return value === "light" || value === "dark" ? value : null;
+    if (value === "light" || value === "dark") {
+      transientThemeOverride = value;
+      return value;
+    }
+    return transientThemeOverride;
   } catch (_) {
-    return null;
+    return transientThemeOverride;
   }
 }
 
 function writeThemeOverride(theme) {
+  const normalized = theme === "light" || theme === "dark" ? theme : null;
+  transientThemeOverride = normalized;
+
   try {
-    if (theme === "light" || theme === "dark") {
-      sessionStorage.setItem(THEME_OVERRIDE_KEY, theme);
+    if (normalized) {
+      sessionStorage.setItem(THEME_OVERRIDE_KEY, normalized);
     } else {
       sessionStorage.removeItem(THEME_OVERRIDE_KEY);
     }
