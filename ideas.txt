@@ -13,3 +13,25 @@
 
 
 You should now rename all the jpg/png files and give them proper names instead of numbers. The location and usage of the pictures should clatify a proper name for them.
+
+Edit current dark/light so it follows system by default and can be changed via the toggle
+
+
+The animation for the 4 donation cards is broken, the animation for the section underlines still works.
+
+THe banners are bugged again and doesnt take whole x space only the x space of the content, fix that so it uses the whole x space again.
+
+
+I just added new icons, use them like the follwowing
+- add the brand-paypal icon to the left in the Mit PayPal spenden button
+
+for the buttons in unsere aktivitäten use:
+- Flohmarkt → building-store
+- Tierärztliche Versorgung → stethoscope
+- Futterstellen - fish
+- Katzenvermittlung → heart-handshake
+- Schutzgebühren → shield-dollar
+- Endlich daheim → home-heart
+- Futter Shop - shopping-cart
+
+add these to the left side in each card.

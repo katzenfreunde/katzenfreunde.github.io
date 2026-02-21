@@ -1,6 +1,4 @@
-﻿/* Content migration layer: semantic replacements for former inline/table layouts */
-
-.content-prose {
+﻿.content-prose {
   max-width: none;
 }
 
@@ -43,17 +41,6 @@
 
 .content-grid__cell:empty {
   display: none;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.data-table th,
-.data-table td {
-  border: 1px solid var(--line);
-  padding: 0.45rem 0.55rem;
 }
 
 .content-list {
@@ -103,4 +90,3 @@
     grid-template-columns: 1fr;
   }
 }
-

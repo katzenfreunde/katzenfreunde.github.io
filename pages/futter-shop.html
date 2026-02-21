@@ -3,6 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <script>
+      (() => {
+        const applyTheme = (theme) => {
+          document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+        };
+
+        try {
+          const override = sessionStorage.getItem("theme_override");
+          if (override === "light" || override === "dark") {
+            applyTheme(override);
+            return;
+          }
+        } catch (_) {
+          // Ignore storage errors and fall back to system preference.
+        }
+
+        const prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        applyTheme(prefersDark ? "dark" : "light");
+      })();
+    </script>
     <title>Futter Shop | Katzenfreunde Bietigheim-Bissingen e.V.</title>
     <meta content="Bei Einkäufen über den Futter-Shop können Sie den Verein indirekt unterstützen." name="description" />
     <link rel="canonical" href="/pages/futter-shop.html" />
@@ -44,7 +65,7 @@
 
             <li class="has-dropdown is-active">
               <a class="nav-link--dropdown" data-i18n="navActivities" href="/pages/unsere-aktivitaeten.html">Unsere Aktivitäten</a>
-
+              <button aria-expanded="false" aria-haspopup="true" aria-label="Untermenü umschalten" class="nav-dropdown-toggle" data-i18n-aria-label="navActivitiesToggle" type="button"></button>
               <ul class="submenu">
                 <li>
                   <a href="/pages/flohmaerkte.html">Flohmarkt</a>
@@ -95,36 +116,36 @@
         </nav>
       </div>
     </header>
-
-    <main>
-      <section class="hero">
-        <div class="hero__card hero__card--top">
-          <div>
-            <h1>Futter Shop</h1>
-            <p>Bei Einkäufen über den Futter-Shop können Sie den Verein indirekt unterstützen.</p>
-            <div class="cta-group">
-              <a class="btn" href="https://www.futter-shuttle.de" rel="noopener noreferrer" target="_blank">Zum Futter-Shop</a>
-              <a class="btn btn--soft" href="/pages/spenden.html">Weitere Spendenmöglichkeiten</a>
+    <main class="page-shell page-shell--with-banner">
+      <article class="rich-content page-content">
+        <section class="hero">
+          <div class="hero__card hero__card--top">
+            <div>
+              <h1>Futter Shop</h1>
+              <p>Bei Einkäufen über den Futter-Shop können Sie den Verein indirekt unterstützen.</p>
+              <div class="cta-group">
+                <a class="btn" href="https://www.futter-shuttle.de" rel="noopener noreferrer" target="_blank">Zum Futter-Shop</a>
+                <a class="btn btn--soft" href="/pages/spenden.html">Weitere Spendenmöglichkeiten</a>
+              </div>
+            </div>
+            <div class="hero__media">
+              <picture
+                ><img
+                  alt="Bildmotiv zur Seite Futter Shop"
+                  decoding="async"
+                  fetchpriority="high"
+                  height="250"
+                  loading="eager"
+                  sizes="(max-width: 980px) 100vw,
+                        960px"
+                  src="/assets/media/resources/futter-shuttle-plakat.jpg"
+                  width="250" />
+              </picture>
             </div>
           </div>
-          <div class="hero__media">
-            <picture
-              ><img
-                alt="Bildmotiv zur Seite Futter Shop"
-                decoding="async"
-                fetchpriority="high"
-                height="250"
-                loading="eager"
-                sizes="(max-width: 980px) 100vw,
-                      960px"
-                src="/assets/media/resources/futter-shuttle-plakat.jpg"
-                width="250" />
-            </picture>
-          </div>
-        </div>
-      </section>
+        </section>
+      </article>
     </main>
-
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-grid">

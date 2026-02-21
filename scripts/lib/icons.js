@@ -42,11 +42,6 @@ export function applyThemeIcons(theme, iconBase) {
     setThemeIcon(el, iconName, folder, iconBase);
   });
 
-  qsa(".doc-download").forEach((el) => {
-    const icon = ensureIconElement(el);
-    icon.src = new URL(`${folder}/download.svg`, iconBase).href;
-  });
-
   qsa(".copy-inline").forEach((el) => {
     setThemeIcon(el, "copy", folder, iconBase);
   });

@@ -6,6 +6,7 @@ const root = document.documentElement;
 const body = document.body;
 const iconBase = new URL("/assets/icons/", window.location.origin);
 const bannerBase = new URL("/assets/banners/", window.location.origin);
+const THEME_OVERRIDE_KEY = "theme_override";
 
 const text = {
   tagline: "Wir helfen Katzen in Not",
@@ -40,9 +41,6 @@ const text = {
   termNov: "05. November",
   termDec: "03. Dezember",
   termDateTime: "Samstag, 10:00 - 14:00 Uhr",
-  termPlaceTitle: "Standort",
-  termPlaceText:
-    "Unsere Stände finden Sie regelmäßig am Ku(h)riosum in Bietigheim-Bissingen. Für Rückfragen können Sie uns telefonisch oder per E-Mail erreichen.",
   termInfoTitle: "Wichtige Hinweise",
   termInfoText:
     "Der Erlös des Flohmarkts kommt ausschließlich dem Tierschutz zugute. Mitgliedsbeiträge und Spenden allein reichen für die medizinische Versorgung unserer Pfleglinge nicht aus.",
@@ -51,7 +49,6 @@ const text = {
   termContactBtn: "Kontakt für Rückfragen",
   toastCopied: "Kopiert: ",
   toastCopyFailed: "Kopieren nicht möglich. Wert: ",
-  toastDoc: "Datei wird heruntergeladen.",
 };
 
 const factItems = [
@@ -89,6 +86,16 @@ function applyText() {
 function setupNavigation() {
   const navToggle = qs("[data-nav-toggle]");
   const navWrap = qs("[data-nav-wrap]");
+  const header = qs(".site-header");
+
+  const isMobileNav = () =>
+    window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
+
+  const closeMobileNav = () => {
+    if (!navToggle || !navWrap) return;
+    navWrap.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  };
 
   if (navToggle && navWrap) {
     on(navToggle, "click", () => {
@@ -110,21 +117,13 @@ function setupNavigation() {
 
   dropdownItems.forEach((item) => {
     const trigger = item.querySelector(".nav-link--dropdown");
-    if (!trigger) return;
+    const toggle = item.querySelector(".nav-dropdown-toggle");
+    if (!trigger || !toggle) return;
 
     trigger.removeAttribute("aria-expanded");
     trigger.removeAttribute("aria-haspopup");
-
-    let toggle = item.querySelector(".nav-dropdown-toggle");
-    if (!toggle) {
-      toggle = document.createElement("button");
-      toggle.type = "button";
-      toggle.className = "nav-dropdown-toggle";
-      toggle.setAttribute("data-i18n-aria-label", "navActivitiesToggle");
-      toggle.setAttribute("aria-haspopup", "true");
-      toggle.setAttribute("aria-expanded", "false");
-      item.insertBefore(toggle, trigger.nextSibling);
-    }
+    toggle.setAttribute("aria-haspopup", "true");
+    toggle.setAttribute("aria-expanded", "false");
 
     on(toggle, "click", (event) => {
       event.preventDefault();
@@ -140,18 +139,38 @@ function setupNavigation() {
       toggle.click();
     });
 
-    on(trigger, "click", closeAllDropdowns);
-    item.querySelectorAll(".submenu a").forEach((link) => on(link, "click", closeAllDropdowns));
+    on(trigger, "click", () => {
+      closeAllDropdowns();
+      closeMobileNav();
+    });
+
+    item.querySelectorAll(".submenu a").forEach((link) =>
+      on(link, "click", () => {
+        closeAllDropdowns();
+        closeMobileNav();
+      })
+    );
   });
 
   on(document, "click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
     if (target && target.closest(".has-dropdown")) return;
     closeAllDropdowns();
+
+    if (!isMobileNav() || !header || !target) return;
+    if (target.closest(".site-header")) return;
+    closeMobileNav();
   });
 
   on(document, "keydown", (event) => {
-    if (event.key === "Escape") closeAllDropdowns();
+    if (event.key !== "Escape") return;
+    closeAllDropdowns();
+    closeMobileNav();
+  });
+
+  on(window, "resize", () => {
+    if (isMobileNav()) return;
+    closeMobileNav();
   });
 }
 
@@ -254,30 +273,94 @@ function setupToplineFacts() {
   }
 }
 
+function readThemeOverride() {
+  try {
+    const value = sessionStorage.getItem(THEME_OVERRIDE_KEY);
+    return value === "light" || value === "dark" ? value : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function writeThemeOverride(theme) {
+  try {
+    if (theme === "light" || theme === "dark") {
+      sessionStorage.setItem(THEME_OVERRIDE_KEY, theme);
+    } else {
+      sessionStorage.removeItem(THEME_OVERRIDE_KEY);
+    }
+  } catch (_) {
+    // Ignore storage errors (privacy mode / browser restrictions).
+  }
+}
+
+function readSystemTheme() {
+  const prefersDark =
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return prefersDark ? "dark" : "light";
+}
+
+function bindSystemThemeSync(onChange) {
+  const systemThemeQuery =
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+  if (!systemThemeQuery) return () => {};
+
+  const handleChange = () => {
+    if (readThemeOverride()) return;
+    onChange(readSystemTheme());
+  };
+
+  if (typeof systemThemeQuery.addEventListener === "function") {
+    systemThemeQuery.addEventListener("change", handleChange);
+    return () => systemThemeQuery.removeEventListener("change", handleChange);
+  }
+
+  if (typeof systemThemeQuery.addListener === "function") {
+    systemThemeQuery.addListener(handleChange);
+    return () => systemThemeQuery.removeListener(handleChange);
+  }
+
+  return () => {};
+}
+
+function resolveTheme() {
+  const override = readThemeOverride();
+  const systemTheme = readSystemTheme();
+  if (override && override === systemTheme) {
+    writeThemeOverride(null);
+    return systemTheme;
+  }
+  return override || systemTheme;
+}
+
 function setTheme(theme) {
-  root.setAttribute("data-theme", theme);
-  localStorage.setItem("site_theme", theme);
+  root.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
   applyText();
   setupToplineFacts();
-  applyThemeIcons(theme, iconBase);
+  applyThemeIcons(root.getAttribute("data-theme"), iconBase);
 }
 
 function initTheme() {
-  const storedTheme = localStorage.getItem("site_theme");
-  if (storedTheme === "light" || storedTheme === "dark") {
-    setTheme(storedTheme);
-  } else {
-    const prefersDark =
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setTheme(prefersDark ? "dark" : "light");
-  }
+  setTheme(resolveTheme());
 
   const themeToggle = qs("[data-theme-toggle]");
+  bindSystemThemeSync(setTheme);
+
   if (!themeToggle) return;
 
   on(themeToggle, "click", () => {
     const current = root.getAttribute("data-theme") || "light";
-    setTheme(current === "dark" ? "light" : "dark");
+    const nextTheme = current === "dark" ? "light" : "dark";
+    const systemTheme = readSystemTheme();
+
+    if (nextTheme === systemTheme) {
+      writeThemeOverride(null);
+      setTheme(systemTheme);
+      return;
+    }
+
+    writeThemeOverride(nextTheme);
+    setTheme(nextTheme);
   });
 }
 
@@ -326,6 +409,9 @@ function buildInlinePdfPreviewUrl(url) {
 function setupInlinePdfPreviews() {
   const cards = qsa(".pdf-inline-card[data-pdf]");
   if (!cards.length) return;
+  const prefersNativePdf =
+    window.matchMedia &&
+    window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
 
   const maxConcurrentLoads = 2;
   let activeLoads = 0;
@@ -387,6 +473,7 @@ function setupInlinePdfPreviews() {
     if (pdfUrl && (!href || href === "#")) {
       card.setAttribute("href", pdfUrl);
     }
+    if (prefersNativePdf) return;
 
     on(card, "pointerenter", () => requestPreviewLoad(card), { passive: true });
     on(card, "focusin", () => requestPreviewLoad(card));
@@ -395,6 +482,8 @@ function setupInlinePdfPreviews() {
       once: true,
     });
   });
+
+  if (prefersNativePdf) return;
 
   if (!("IntersectionObserver" in window)) {
     cards.slice(0, 2).forEach((card) => requestPreviewLoad(card));
@@ -415,7 +504,7 @@ function setupInlinePdfPreviews() {
   cards.forEach((card) => observer.observe(card));
 }
 
-function setupPdfModal(showToast) {
+function setupPdfModal() {
   const modal = qs("[data-pdf-modal]");
   const modalBackdrop = modal ? qs("[data-modal-backdrop]", modal) : null;
   const modalClose = modal ? qs("[data-modal-close]", modal) : null;
@@ -450,10 +539,23 @@ function setupPdfModal(showToast) {
   };
 
   delegate("click", ".pdf-preview", (event, link) => {
-    event.preventDefault();
     const url = link.getAttribute("data-pdf") || link.getAttribute("href");
+    const pdfUrl = normalizePdfUrl(url);
+    if (!pdfUrl) return;
+
+    const prefersNativePdf =
+      window.matchMedia &&
+      window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
+    if (prefersNativePdf) {
+      event.preventDefault();
+      const popup = window.open(pdfUrl, "_blank", "noopener");
+      if (!popup) window.location.href = pdfUrl;
+      return;
+    }
+
+    event.preventDefault();
     const title = link.getAttribute("data-title") || link.textContent.trim();
-    openPdf(url, title);
+    openPdf(pdfUrl, title);
   });
 
   if (modalBackdrop) on(modalBackdrop, "click", closePdf);
@@ -468,9 +570,6 @@ function setupPdfModal(showToast) {
     modalFrame.removeAttribute("data-current-pdf");
   });
 
-  qsa(".doc-download").forEach((link) => {
-    on(link, "click", () => showToast(t("toastDoc")));
-  });
 }
 
 function setupReveal() {
@@ -702,7 +801,7 @@ function boot() {
   const showToast = setupToasts();
   setupCopy(showToast);
   setupInlinePdfPreviews();
-  setupPdfModal(showToast);
+  setupPdfModal();
   setupHeaderScroll();
   applyBannerImage();
   setupReveal();

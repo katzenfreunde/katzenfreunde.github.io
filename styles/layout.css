@@ -1,18 +1,5 @@
-﻿/* Layout layer: shared template structure and utility fixes */
-
-body[data-banner-mode="none"] .page-banner[data-auto-banner] {
+﻿body[data-banner-mode="none"] .page-banner[data-auto-banner] {
   display: none;
-}
-
-.modal__download {
-  min-height: 34px;
-  padding: 0.35rem 0.7rem;
-  font-size: 0.82rem;
-}
-
-.modal__download .icon-glyph {
-  width: 16px;
-  height: 16px;
 }
 
 .icon-link,

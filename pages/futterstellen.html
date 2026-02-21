@@ -3,6 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <script>
+      (() => {
+        const applyTheme = (theme) => {
+          document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+        };
+
+        try {
+          const override = sessionStorage.getItem("theme_override");
+          if (override === "light" || override === "dark") {
+            applyTheme(override);
+            return;
+          }
+        } catch (_) {
+          // Ignore storage errors and fall back to system preference.
+        }
+
+        const prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        applyTheme(prefersDark ? "dark" : "light");
+      })();
+    </script>
     <title>Futterstellen | Katzenfreunde Bietigheim-Bissingen e.V.</title>
     <meta content="Regelmäßige Versorgung freilebender Katzen an betreuten Stellen." name="description" />
     <link rel="canonical" href="/pages/futterstellen.html" />
@@ -44,7 +65,7 @@
 
             <li class="has-dropdown is-active">
               <a class="nav-link--dropdown" data-i18n="navActivities" href="/pages/unsere-aktivitaeten.html">Unsere Aktivitäten</a>
-
+              <button aria-expanded="false" aria-haspopup="true" aria-label="Untermenü umschalten" class="nav-dropdown-toggle" data-i18n-aria-label="navActivitiesToggle" type="button"></button>
               <ul class="submenu">
                 <li>
                   <a href="/pages/flohmaerkte.html">Flohmarkt</a>

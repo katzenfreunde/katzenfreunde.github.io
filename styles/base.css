@@ -1,5 +1,8 @@
 :root {
   color-scheme: light;
+  --container-xl: 1180px;
+  --container-content: 960px;
+  --gutter-inline: 1rem;
   --bg: #fbfbf7;
   --bg-accent: #f7f4eb;
   --surface: #ffffff;

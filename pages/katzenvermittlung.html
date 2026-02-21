@@ -3,6 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <script>
+      (() => {
+        const applyTheme = (theme) => {
+          document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+        };
+
+        try {
+          const override = sessionStorage.getItem("theme_override");
+          if (override === "light" || override === "dark") {
+            applyTheme(override);
+            return;
+          }
+        } catch (_) {
+          // Ignore storage errors and fall back to system preference.
+        }
+
+        const prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        applyTheme(prefersDark ? "dark" : "light");
+      })();
+    </script>
     <title>Katzenvermittlung | Katzenfreunde Bietigheim-Bissingen e.V.</title>
     <meta content="Vermittlung in ein sicheres, liebevolles Zuhause." name="description" />
     <link rel="canonical" href="/pages/katzenvermittlung.html" />
@@ -44,7 +65,7 @@
 
             <li class="has-dropdown is-active">
               <a class="nav-link--dropdown" data-i18n="navActivities" href="/pages/unsere-aktivitaeten.html">Unsere Aktivitäten</a>
-
+              <button aria-expanded="false" aria-haspopup="true" aria-label="Untermenü umschalten" class="nav-dropdown-toggle" data-i18n-aria-label="navActivitiesToggle" type="button"></button>
               <ul class="submenu">
                 <li>
                   <a href="/pages/flohmaerkte.html">Flohmarkt</a>
@@ -103,36 +124,33 @@
           <p>Vermittlung in ein sicheres und liebevolles Zuhause auf Lebenszeit.</p>
         </section>
         <div class="content-prose">
-          <p>
-            <strong>Wir suchen Menschen mit Herz und Verstand, die unseren Katzen in Not ein liebevolles und geschütztes Zuhause geben.</strong>
-          </p>
-          <p>Katzenvermittlung (+Anzeigenschaltung): <strong>Jutta Hoenig</strong></p>
-          <p>Telefonische Anfragen (ab 16.30 Uhr): <strong>01577 2702827</strong></p>
-          <p>Auch per WhatsApp erreichbar: <strong>01577 2702827</strong></p>
-          <p>
-            Schriftliche Anfragen an:
-            <a href="mailto:katzenfreunde-bibi@gmx.de">katzenfreunde-bibi@gmx.de</a>
-          </p>
-          <p><strong>Formulare und Unterlagen</strong></p>
-          <ul class="content-list">
-            <li><strong>Interessenten-Kontaktformular.doc:</strong> <a href="/assets/media/data/Hoenig/Interessenten-Kontaktformular.doc" target="_blank">Download</a></li>
-            <li>
-              <strong>Interessenten-Kontaktformular.pdf:</strong>
-              <a class="pdf-preview" data-pdf="/assets/media/data/Hoenig/Interessenten-Kontaktformular.pdf" data-title="Interessenten-Kontaktformular" href="#" target="_blank"
-                >Download<span class="pdf-badge">Vorschau</span></a
-              >
-            </li>
-            <li>
-              <strong>Abgabevereinbarung.pdf:</strong>
-              <a class="pdf-preview" data-pdf="/assets/media/data/Abgabevereinbarung.pdf" data-title="Abgabevereinbarung" href="#" target="_blank">Download<span class="pdf-badge">Vorschau</span></a>
-            </li>
-          </ul>
-          <p>
-            <strong>Mehrere Katzen und Kätzchen (weiblich und männlich) im Alter zwischen 16 Wochen und 12 Jahren suchen ein liebevolles Zuhause auf Lebenszeit.</strong>
-          </p>
-          <p>
-            <strong>Info unter Tel. 01577 2702827</strong>
-          </p>
+          <p>Wir suchen Menschen mit Herz und Verstand, die unseren Katzen in Not ein liebevolles und geschütztes Zuhause geben.</p>
+          <p>Für Vermittlungsanfragen nutzen Sie bitte unsere Kontaktseite. Zuständig ist dort Jutta Hoenig (Katzenvermittlung).</p>
+          <div class="cta-group">
+            <a class="btn btn--soft" href="/pages/kontakt.html">Zur Kontaktseite</a>
+          </div>
+
+          <div class="activity-section-divider">
+            <h2>Formulare und Unterlagen</h2>
+            <div class="pdf-inline-grid">
+              <a class="pdf-preview pdf-inline-card" data-pdf="/assets/media/data/Hoenig/Interessenten-Kontaktformular.pdf" data-title="Interessenten-Kontaktformular" href="#" target="_blank">
+                <span aria-hidden="true" class="pdf-inline-card__frame"><span class="pdf-placeholder">PDF Vorschau</span></span>
+                <span class="pdf-inline-card__caption">
+                  Interessenten-Kontaktformular.pdf
+                  <span class="pdf-badge">Vorschau</span>
+                </span>
+              </a>
+              <a class="pdf-preview pdf-inline-card" data-pdf="/assets/media/data/Abgabevereinbarung.pdf" data-title="Abgabevereinbarung" href="#" target="_blank">
+                <span aria-hidden="true" class="pdf-inline-card__frame"><span class="pdf-placeholder">PDF Vorschau</span></span>
+                <span class="pdf-inline-card__caption">
+                  Abgabevereinbarung.pdf
+                  <span class="pdf-badge">Vorschau</span>
+                </span>
+              </a>
+            </div>
+            <p><a href="/assets/media/data/Hoenig/Interessenten-Kontaktformular.doc" target="_blank">Interessenten-Kontaktformular.doc herunterladen</a></p>
+          </div>
+          <p>Mehrere Katzen und Kätzchen (weiblich und männlich) im Alter zwischen 16 Wochen und 12 Jahren suchen ein liebevolles Zuhause auf Lebenszeit.</p>
         </div>
       </article>
     </main>
@@ -175,7 +193,5 @@
     <div aria-live="polite" class="toast" data-toast role="status"></div>
   </body>
 </html>
-
-
 
 
