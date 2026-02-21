@@ -4,7 +4,6 @@
   z-index: 60;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
-  backdrop-filter: blur(10px);
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
@@ -25,8 +24,7 @@
     max-height 240ms ease,
     height 240ms ease,
     padding 240ms ease,
-    opacity 220ms ease,
-    transform 220ms ease;
+    opacity 220ms ease;
 }
 
 .topline--facts {
@@ -205,7 +203,6 @@ body.is-scrolled .topline {
   padding-top: 0;
   padding-bottom: 0;
   opacity: 0;
-  transform: translateY(-100%);
 }
 
 body.is-scrolled .site-header {

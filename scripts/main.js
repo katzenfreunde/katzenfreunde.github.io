@@ -671,6 +671,15 @@ function setupSectionUnderlines() {
 }
 
 function setupHeaderScroll() {
+  const disableCompactHeaderOnTouch =
+    window.matchMedia &&
+    window.matchMedia("(max-width: 1024px), (pointer: coarse)").matches;
+
+  if (disableCompactHeaderOnTouch) {
+    body.classList.remove("is-scrolled");
+    return;
+  }
+
   let ticking = false;
   let isCompact = false;
 
