@@ -89,7 +89,7 @@ function setupNavigation() {
   const header = qs(".site-header");
 
   const isMobileNav = () =>
-    window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
+    window.matchMedia && window.matchMedia("(max-width: 1100px)").matches;
 
   const closeMobileNav = () => {
     if (!navToggle || !navWrap) return;

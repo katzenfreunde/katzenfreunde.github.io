@@ -2,6 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 60;
+  overflow-x: clip;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
   transition:
@@ -97,6 +98,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
+  min-width: 0;
   min-height: 56px;
   gap: 0.9rem;
   max-width: var(--container-xl);
@@ -191,6 +193,7 @@
   grid-row: 1;
   justify-self: center;
   align-self: center;
+  min-width: 0;
   width: max-content;
   max-width: 100%;
   margin-top: 0;
@@ -574,11 +577,9 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   gap: 0.4rem;
   height: clamp(170px, 24vw, 280px);
   width: 100vw;
-  width: 100dvw;
   max-width: none;
   margin: clamp(1rem, 2.4vw, 1.4rem) 0;
   margin-inline: calc(50% - 50vw);
-  margin-inline: calc(50% - 50dvw);
   padding: 0.4rem;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -1993,7 +1994,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .header-main {
     display: flex;
     flex-wrap: wrap;
