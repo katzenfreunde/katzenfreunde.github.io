@@ -21,6 +21,8 @@
   height: 40px;
   max-height: 40px;
   overflow: hidden;
+  overflow-x: clip;
+  min-width: 0;
   transition:
     max-height 240ms ease,
     height 240ms ease,
@@ -35,18 +37,26 @@
   padding: 0;
   overflow: hidden;
   contain: layout paint;
+  min-width: 0;
 }
 
 .fact-marquee {
+  position: relative;
+  display: block;
+  inline-size: 100%;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   max-width: 100%;
+  min-width: 0;
+  contain: layout paint size;
 }
 
 .fact-marquee__track {
   display: flex;
   width: max-content;
+  max-width: 100%;
+  min-width: 0;
   align-items: center;
   animation: facts-marquee var(--facts-duration, 52s) linear infinite;
   will-change: transform;
