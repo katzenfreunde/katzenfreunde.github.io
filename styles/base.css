@@ -101,15 +101,6 @@ body {
 
 body::-webkit-scrollbar {
   width: 1px;
-  height: 1px;
-}
-
-body::-webkit-scrollbar-track {
-  border: 0;
-}
-
-body::-webkit-scrollbar-thumb {
-  border: 0;
 }
 
 main {
