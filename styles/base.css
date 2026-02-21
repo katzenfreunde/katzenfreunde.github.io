@@ -107,6 +107,17 @@ main {
   flex: 1 0 auto;
 }
 
+@media (pointer: coarse) {
+  html,
+  body {
+    overscroll-behavior-x: none;
+  }
+
+  body {
+    touch-action: pan-y pinch-zoom;
+  }
+}
+
 a,
 button,
 input[type="button"],

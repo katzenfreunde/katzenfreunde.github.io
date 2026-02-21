@@ -675,6 +675,24 @@ function setupHeaderScroll() {
   body.classList.remove("is-scrolled");
 }
 
+function setupHorizontalLock() {
+  const isCoarsePointer =
+    window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  if (!isCoarsePointer) return;
+
+  const lockX = () => {
+    const x = window.scrollX || window.pageXOffset || 0;
+    if (x === 0) return;
+    window.scrollTo(0, window.scrollY || window.pageYOffset || 0);
+  };
+
+  lockX();
+  on(window, "scroll", lockX, { passive: true });
+  on(window, "orientationchange", () => {
+    window.setTimeout(lockX, 80);
+  });
+}
+
 async function resolveBannerFiles() {
   try {
     const response = await fetch("/assets/banners/banner-manifest.json", { cache: "force-cache" });
@@ -780,6 +798,7 @@ function boot() {
   setupInlinePdfPreviews();
   setupPdfModal();
   setupHeaderScroll();
+  setupHorizontalLock();
   applyBannerImage();
   setupReveal();
   setupSectionUnderlines();

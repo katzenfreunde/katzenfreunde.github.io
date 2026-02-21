@@ -33,12 +33,15 @@
   display: flex;
   align-items: center;
   padding: 0;
+  overflow: hidden;
+  contain: layout paint;
 }
 
 .fact-marquee {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
+  max-width: 100%;
 }
 
 .fact-marquee__track {
@@ -2030,10 +2033,13 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   }
 
   .main-nav > li {
+    display: flex;
+    justify-content: center;
     width: 100%;
   }
 
   .main-nav > li > a {
+    display: flex;
     width: fit-content;
     max-width: 100%;
     margin-inline: auto;
