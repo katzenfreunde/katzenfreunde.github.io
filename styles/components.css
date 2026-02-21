@@ -1744,10 +1744,21 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 }
 
 .site-footer {
+  position: relative;
   margin-top: 2.4rem;
   border-top: 1px solid var(--line);
   background: var(--surface);
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+.site-footer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: env(safe-area-inset-bottom);
+  background: var(--surface);
 }
 
 .page-futter-shop .site-footer {
@@ -2245,6 +2256,12 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 
   .contact-table td:nth-child(4)::before {
     content: "Fax";
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-footer::after {
+    height: max(env(safe-area-inset-bottom), 18px);
   }
 }
 
