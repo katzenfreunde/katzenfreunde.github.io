@@ -3,7 +3,7 @@
   top: 0;
   z-index: 60;
   border-bottom: 1px solid var(--line);
-  background: var(--surface);
+  background: var(--bg);
   backdrop-filter: blur(10px);
   transition:
     border-color 220ms ease,
