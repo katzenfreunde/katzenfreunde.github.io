@@ -2,7 +2,6 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  overflow-x: clip;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
   transition:
@@ -215,6 +214,7 @@
   min-width: 0;
   width: max-content;
   max-width: 100%;
+  overflow: visible;
   margin-top: 0;
   transition: margin-top 220ms ease;
 }
@@ -227,11 +227,13 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  overflow: visible;
   gap: 0.72rem;
 }
 
 .main-nav > li {
   position: relative;
+  overflow: visible;
 }
 
 .main-nav > li > a {
