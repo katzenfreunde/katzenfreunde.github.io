@@ -547,9 +547,9 @@ function setupPdfModal() {
       window.matchMedia &&
       window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
     if (prefersNativePdf) {
-      event.preventDefault();
-      const popup = window.open(pdfUrl, "_blank", "noopener");
-      if (!popup) window.location.href = pdfUrl;
+      link.setAttribute("href", pdfUrl);
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener");
       return;
     }
 

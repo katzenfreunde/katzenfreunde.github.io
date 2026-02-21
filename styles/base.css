@@ -82,10 +82,13 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-x: clip;
+  background: var(--surface);
 }
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

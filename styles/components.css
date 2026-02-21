@@ -1747,6 +1747,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   margin-top: 2.4rem;
   border-top: 1px solid var(--line);
   background: var(--surface);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .page-futter-shop .site-footer {
@@ -2063,7 +2064,12 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    align-items: stretch;
     gap: 0.25rem;
+  }
+
+  .main-nav > li {
+    width: 100%;
   }
 
   .main-nav > li > a {
@@ -2071,6 +2077,8 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
     border-radius: 0;
     padding-left: 0;
     padding-right: 0;
+    justify-content: center;
+    text-align: center;
   }
 
   .main-nav > li.has-dropdown {
@@ -2082,6 +2090,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 
   .main-nav > li.has-dropdown > .nav-link--dropdown {
     min-width: 0;
+    padding-left: 44px;
   }
 
   .nav-dropdown-toggle {
@@ -2090,6 +2099,20 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
     min-width: 44px;
     min-height: 44px;
     justify-self: end;
+  }
+
+  .rich-content a,
+  .pdf-inline-card__caption,
+  .bank-item__value,
+  .contact-table a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .page-banner {
+    width: calc(100% + (var(--gutter-inline) * 2));
+    max-width: none;
+    margin-inline: calc(-1 * var(--gutter-inline));
   }
 
   .contact-quick {
@@ -2138,6 +2161,8 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
     height: clamp(140px, 42vw, 220px);
     gap: 0.3rem;
     padding: 0.3rem;
+    width: calc(100% + (var(--gutter-inline) * 2));
+    margin-inline: calc(-1 * var(--gutter-inline));
   }
 
   .contact-table-wrap {
