@@ -1,4 +1,4 @@
-﻿import { qsa } from "./dom.js";
+import { qsa } from "./dom.js";
 
 export function iconFolderForTheme(theme) {
   return theme === "dark" ? "dark" : "light";

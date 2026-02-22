@@ -53,12 +53,12 @@ const text = {
 };
 
 const factItems = [
-  "Bis zu 2.000.000 Straßenkatzen - mitten in Deutschland.",
-  "99 % sind krank, wenn Hilfe sie erreicht.",
-  "Bis zu 75 % der Straßen-Kitten sterben vor 6 Monaten.",
-  "71 % der Tierschutzvereine: Die Population wächst weiter.",
-  "84 % der aufgenommenen Kitten: von der Straße.",
-  "Das Leid bleibt unsichtbar - bis es zu spät ist.",
+  "Schätzungen zufolge leben rund 2.000.000 Straßenkatzen in Deutschland.",
+  "99 % der Straßenkatzen sind krank, wenn Tierschutzvereine sie erstmals untersuchen.",
+  "Bis zu 75 % der Kitten von Straßenkatzen erreichen nicht den 6. Lebensmonat.",
+  "71 % der Tierschutzvereine berichten 2024 von steigenden Straßenkatzenpopulationen.",
+  "Im Schnitt stammen 84 % der aufgenommenen Kitten laut Tierschutzvereinen von Straßenkatzen.",
+  "Das Leid bleibt oft unsichtbar, weil Straßenkatzen meist scheu und im Verborgenen leben."
 ];
 
 function t(key) {
@@ -500,6 +500,12 @@ function setupToasts() {
   };
 }
 
+function prefersReducedMotion() {
+  return Boolean(
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
 function setupCopy(showToast) {
   delegate("click", "[data-copy-email], [data-copy-text]", (event, target) => {
     if (target.tagName.toLowerCase() === "a") {
@@ -779,7 +785,9 @@ function readMsVar(el, name) {
 }
 
 function setupSectionUnderlines() {
-  const targets = qsa(".schedule-section, .toc-card, .activity-overview");
+  const targets = qsa(
+    ".schedule-section, .toc-card, .activity-overview, .activity-section-divider, .termine-details-divider"
+  );
   if (!targets.length) return;
 
   const activate = (el, idx = 0) => {
@@ -903,7 +911,7 @@ async function applyBannerImage() {
 }
 
 function setupClickPaw() {
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (prefersReducedMotion()) return;
 
   const selector = "button, .btn, .icon-btn, .icon-link, .theme-toggle, .main-nav a, .submenu a";
   delegate("pointerdown", selector, (event) => {
@@ -934,6 +942,3 @@ function boot() {
 }
 
 boot();
-
-
-

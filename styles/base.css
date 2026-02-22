@@ -3,46 +3,95 @@
   --container-xl: 1180px;
   --container-content: 960px;
   --gutter-inline: 1rem;
-  --bg: #fbfbf7;
-  --bg-accent: #f7f4eb;
+
+  /* Neutral light surfaces (taupe/moss only as accents) */
+  --bg: #f8f9f7;
+  --bg-accent: #f1f3ef;
   --surface: #ffffff;
-  --surface-soft: #f2ecdf;
-  --text: #1f2a22;
-  --muted: #5a665d;
-  --brand: #336f4c;
-  --brand-strong: #25533a;
-  --line: #d9d0be;
-  --line-strong: #b7ad94;
-  --accent: #e6dcc4;
-  --accent-strong: #ccb894;
-  --shadow-soft: 0 16px 40px rgba(31, 50, 38, 0.1);
-  --shadow-strong: 0 24px 56px rgba(16, 28, 20, 0.18);
+  --surface-soft: #e9e2d5;
+
+  /* Text */
+  --text: #232622;
+  --muted: #5e655c;
+
+  /* Brand / accents */
+  --brand: #6b7d57;
+  --brand-strong: #6b7d57;
+  --brand-hover: #5f704d;
+  --brand-hover-strong: #5f704d;
+
+  --line: #cbbba0;
+  --line-strong: #beae92;
+
+  --accent: #cbbba0;
+  --accent-strong: #beae92;
+  --accent-hover: #beae92;
+
+  /* Effects */
+  --shadow-soft: 0 16px 40px rgba(35, 38, 34, 0.1);
+  --shadow-strong: 0 24px 56px rgba(28, 31, 27, 0.18);
+
+  /* Radius */
   --radius-m: 4px;
   --radius-l: 6px;
+
+  /* Fonts */
   --font-main: "Source Sans 3", "Segoe UI", Tahoma, sans-serif;
   --font-display: "Amatic SC", "Segoe UI", Tahoma, sans-serif;
+
+  /* Assets */
   --paw-icon: url("../assets/icons/light/paw.svg");
+  --divider-squiggle: url("../assets/decor/light/divider-squiggle.svg");
+  --divider-mark-paw: url("../assets/decor/light/divider-pawtrail.svg");
+  --divider-mark-fish: url("../assets/decor/light/divider-fishbone.svg");
+  --divider-mark-cat: url("../assets/decor/light/divider-catpeek.svg");
+
+  /* Cursor */
   --cursor-main: url("../assets/cursor/dark/paw-filled.cur") 2 1, auto;
   --cursor-action: url("../assets/cursor/dark/paw-filled.cur") 2 1, pointer;
 }
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #1a1c1f;
-  --bg-accent: #202327;
-  --surface: #25292d;
-  --surface-soft: #3a342d;
-  --text: #ecefeb;
-  --muted: #bec4bd;
-  --brand: #6b8b75;
-  --brand-strong: #96af9d;
-  --line: #5a5246;
-  --line-strong: #847661;
-  --accent: #7e725e;
-  --accent-strong: #b59f7a;
+  --container-xl: 1180px;
+  --container-content: 960px;
+  --gutter-inline: 1rem;
+
+  /* Neutral dark surfaces (taupe/moss only as accents) */
+  --bg: #161718;
+  --bg-accent: #1d1f20;
+  --surface: #232527;
+  --surface-soft: #423c34;
+
+  /* Text */
+  --text: #e8ebe5;
+  --muted: #b8beb5;
+
+  /* Brand / accents */
+  --brand: #7f9368;
+  --brand-strong: #7f9368;
+  --brand-hover: #93a97a;
+  --brand-hover-strong: #93a97a;
+
+  --line: #b7aa93;
+  --line-strong: #c5b8a1;
+
+  --accent: #b7aa93;
+  --accent-strong: #c5b8a1;
+  --accent-hover: #c5b8a1;
+
+  /* Assets */
   --paw-icon: url("../assets/icons/dark/paw.svg");
+  --divider-squiggle: url("../assets/decor/dark/divider-squiggle.svg");
+  --divider-mark-paw: url("../assets/decor/dark/divider-pawtrail.svg");
+  --divider-mark-fish: url("../assets/decor/dark/divider-fishbone.svg");
+  --divider-mark-cat: url("../assets/decor/dark/divider-catpeek.svg");
+
+  /* Effects */
   --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.3);
   --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.44);
+
+  /* Cursor */
   --cursor-main: url("../assets/cursor/light/paw-filled.cur") 2 1, auto;
   --cursor-action: url("../assets/cursor/light/paw-filled.cur") 2 1, pointer;
 }
@@ -176,5 +225,5 @@ a {
 
 a:hover,
 a:focus-visible {
-  color: var(--brand);
+  color: var(--brand-hover, var(--brand));
 }
