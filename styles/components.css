@@ -563,9 +563,63 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 
 .membership-docs {
   clear: both;
-  border-top: 1px solid var(--line);
+  position: relative;
+  border-top: 0;
   margin-top: 1.2rem;
-  padding-top: 0.9rem;
+  padding-top: 1.15rem;
+  padding-bottom: 0.55rem;
+  --section-paw-size: 15px;
+  --section-divider-right-gap: 0px;
+  --section-paw-end-offset: 0px;
+  --section-divider-bg: linear-gradient(
+    90deg,
+    var(--line-strong) 0,
+    var(--line-strong) 100%
+  );
+}
+
+.membership-docs::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-image: var(--section-divider-bg);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0.95;
+  transition:
+    transform 920ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 380ms ease;
+}
+
+.membership-docs.section-underline-visible::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.membership-docs::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--section-paw-size) * 0.5);
+  top: -7px;
+  width: var(--section-paw-size);
+  height: var(--section-paw-size);
+  background: var(--paw-icon) center / contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    left 920ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 260ms ease,
+    transform 920ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform: translateX(-50%) rotate(270deg) scale(0.92);
+}
+
+.membership-docs.section-underline-visible::after {
+  left: calc(100% - var(--section-divider-right-gap, 0px) + var(--section-paw-end-offset, 0px));
+  opacity: 0.92;
+  transform: translateX(-50%) rotate(270deg) scale(1);
 }
 
 .membership-tax-note {
@@ -701,7 +755,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   font-family: var(--font-main);
 }
 
-.rich-content section {
+.rich-content section:not(.schedule-section):not(.toc-card):not(.activity-overview):not(.activity-section-divider):not(.termine-details-divider) {
   position: relative;
   padding-top: 0.2rem;
 }
@@ -932,6 +986,21 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 .bank-grid--address .bank-item {
   grid-template-columns: 140px 1fr;
   gap: 0.8rem;
+}
+
+.bank-grid--address .bank-item--copy {
+  grid-template-columns: 140px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.bank-grid--address .bank-item__label {
+  color: var(--brand-strong);
+}
+
+.bank-grid--address .bank-item__value {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .bank-item {
@@ -1293,7 +1362,8 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   --section-paw-size: 15px;
   --section-divider-right-gap: 10px;
   --section-paw-end-offset: 4px;
-  padding-top: 1rem;
+  padding-top: 1.15rem;
+  padding-bottom: 0.55rem;
 }
 
 .schedule-section:first-child,
@@ -1363,7 +1433,8 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   position: relative;
   border-top: 0;
   margin-top: 0.7rem;
-  padding-top: 1rem;
+  padding-top: 1.15rem;
+  padding-bottom: 0.55rem;
   --section-paw-size: 15px;
   --section-divider-right-gap: 0px;
   --section-paw-end-offset: 0px;

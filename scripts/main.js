@@ -786,7 +786,7 @@ function readMsVar(el, name) {
 
 function setupSectionUnderlines() {
   const targets = qsa(
-    ".schedule-section, .toc-card, .activity-overview, .activity-section-divider, .termine-details-divider"
+    ".schedule-section, .toc-card, .activity-overview, .activity-section-divider, .termine-details-divider, .membership-docs"
   );
   if (!targets.length) return;
 
