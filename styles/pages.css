@@ -11,6 +11,12 @@
     margin-inline: auto;
   }
 
+  body[data-page="home"] .home-gallery .media-tile--link-logo > img {
+    object-fit: contain;
+    object-position: center;
+    background: #fff;
+  }
+
   body[data-page="futter-shop"] .site-footer {
     margin-top: auto;
   }
