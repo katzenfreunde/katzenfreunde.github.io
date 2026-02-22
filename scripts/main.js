@@ -835,13 +835,15 @@ async function resolveBannerFiles() {
     const items = await response.json();
     const files = items
       .map((item) => item && item.file)
-      .filter((file) => typeof file === "string" && file.endsWith(".jpg"));
+      .filter((file) => typeof file === "string")
+      .map((file) => file.replace(/^.*[\\/]/, ""))
+      .filter((file) => /^banner-\d{2}\.jpg$/i.test(file));
     if (files.length) return files;
   } catch (_) {
     // Keep silent and use fallback list.
   }
 
-  return Array.from({ length: 25 }, (_, i) => `banner-${String(i + 1).padStart(2, "0")}.jpg`);
+  return Array.from({ length: 28 }, (_, i) => `banner-${String(i + 1).padStart(2, "0")}.jpg`);
 }
 
 async function applyBannerImage() {
