@@ -44,10 +44,6 @@
 
   /* Assets */
   --paw-icon: url("../assets/icons/light/paw.svg");
-  --divider-squiggle: url("../assets/decor/light/divider-squiggle.svg");
-  --divider-mark-paw: url("../assets/decor/light/divider-pawtrail.svg");
-  --divider-mark-fish: url("../assets/decor/light/divider-fishbone.svg");
-  --divider-mark-cat: url("../assets/decor/light/divider-catpeek.svg");
 
   /* Cursor */
   --cursor-main: url("../assets/cursor/dark/paw-filled.cur") 2 1, auto;
@@ -85,10 +81,6 @@ html[data-theme="dark"] {
 
   /* Assets */
   --paw-icon: url("../assets/icons/dark/paw.svg");
-  --divider-squiggle: url("../assets/decor/dark/divider-squiggle.svg");
-  --divider-mark-paw: url("../assets/decor/dark/divider-pawtrail.svg");
-  --divider-mark-fish: url("../assets/decor/dark/divider-fishbone.svg");
-  --divider-mark-cat: url("../assets/decor/dark/divider-catpeek.svg");
 
   /* Effects */
   --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.3);

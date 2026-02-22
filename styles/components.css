@@ -462,7 +462,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 
 .hero__eyebrow {
   margin: 0 0 0.35rem;
-  color: var(--brand);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   font-size: 0.82rem;
@@ -657,7 +657,7 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--brand);
+  color: var(--text);
   font-weight: 700;
 }
 

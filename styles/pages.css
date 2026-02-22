@@ -1,4 +1,4 @@
-@layer overrides {
+﻿@layer overrides {
   .page-content.rich-content--home {
     max-width: var(--container-xl);
   }
@@ -43,4 +43,20 @@
     transform: none;
     animation: none;
   }
+
+  body[data-page="interessante-links"] .link-gallery .media-tile--link picture {
+    display: block;
+    width: 100%;
+    line-height: 0;
+  }
+
+  body[data-page="interessante-links"] .link-gallery .media-tile--link picture > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    background: #fff;
+  }
 }
+
