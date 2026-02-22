@@ -1,3 +1,6 @@
+@layer tokens, reset, base, layout, content, components, utilities, overrides;
+
+@layer base {
 :root {
   color-scheme: light;
   --container-xl: 1180px;
@@ -226,4 +229,5 @@ a {
 a:hover,
 a:focus-visible {
   color: var(--brand-hover, var(--brand));
+}
 }

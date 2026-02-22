@@ -785,17 +785,16 @@ function readMsVar(el, name) {
 }
 
 function setupSectionUnderlines() {
-  const targets = qsa(
-    ".schedule-section, .toc-card, .activity-overview, .activity-section-divider, .termine-details-divider, .membership-docs"
-  );
+  const targets = qsa('[data-reveal="divider"], .js-reveal-divider');
   if (!targets.length) return;
 
   const activate = (el, idx = 0) => {
-    if (el.classList.contains("section-underline-visible")) return;
+    if (el.classList.contains("is-visible") || el.classList.contains("section-underline-visible")) return;
     const revealDelay = readMsVar(el, "--reveal-delay");
     const stagger = Math.min(idx, 4) * 35;
     const delay = revealDelay + 120 + stagger;
     window.setTimeout(() => {
+      el.classList.add("is-visible");
       el.classList.add("section-underline-visible");
     }, delay);
   };

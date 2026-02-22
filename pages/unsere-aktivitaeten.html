@@ -30,25 +30,24 @@
 
     <link rel="preload" href="/styles/fonts.css" as="style" />
     <link rel="stylesheet" href="/styles/fonts.css" />
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/components.css" />
-    <link rel="stylesheet" href="/styles/content-migrated.css" />
+    <link rel="stylesheet" href="/styles/base.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/layout.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/components.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/content.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/pages.css?v=css-refactor-2" />
     <script defer type="module" src="/scripts/main.js"></script>
   </head>
-  <body data-banner-mode="auto">
+  <body data-banner-mode="auto" data-page="unsere-aktivitaeten">
     <header class="site-header">
       <div class="topline" data-i18n="tagline">Wir helfen Katzen in Not</div>
       <div class="header-main">
-        <div class="brand-row">
-          <a class="brand" href="/index.html">
+        <a class="brand" href="/index.html">
             <img alt="Vereinslogo" class="brand__logo" height="62" src="/assets/katzenfreunde.png" width="62" />
           </a>
           <div class="header-controls">
             <button aria-label="Farbmodus wechseln" class="theme-toggle" data-i18n-aria-label="themeAria" data-theme-toggle type="button"></button>
             <button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" data-i18n="menuToggle" data-nav-toggle type="button">Menü</button>
           </div>
-        </div>
         <nav aria-label="Hauptnavigation" class="nav-wrap" data-nav-wrap id="site-nav">
           <ul class="main-nav">
             <li class="">
@@ -125,7 +124,7 @@
       </div>
     </section>
     <main class="page-shell page-shell--with-banner">
-      <section class="activity-overview">
+      <section class="activity-overview section-divider section-divider--fade" data-reveal="divider">
         <p class="activity-note">Um Sie mit unseren wichtigsten Einsatzbereichen vertraut zu machen, finden Sie hier die zentralen Aufgaben unseres Vereins. Klicken Sie auf eine Kachel für mehr Informationen.</p>
         <div class="activity-hub">
           <a class="activity-card" data-icon="building-store" href="/pages/flohmaerkte.html"><strong>Flohmarkt</strong></a
@@ -137,8 +136,8 @@
           ><a class="activity-card" data-icon="shopping-cart" href="/pages/futter-shop.html"><strong>Futter Shop</strong></a>
         </div>
       </section>
-      <article class="rich-content page-content">
-        <section class="activity-section-divider">
+      <article class="rich-content prose page-content">
+        <section class="activity-section-divider section-divider section-divider--solid" data-reveal="divider">
           <h3>Betreuung von Futterstellen</h3>
           <p>Katzen, die nicht an Menschen gewöhnt werden können, versorgen wir täglich mit Futter und Wasser an ihren angestammten Plätzen. Dabei achten wir auch auf ihren Gesundheitszustand.</p>
         </section>

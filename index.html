@@ -30,25 +30,24 @@
     <link as="image" href="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg" rel="preload" />
     <link rel="preload" href="/styles/fonts.css" as="style" />
     <link rel="stylesheet" href="/styles/fonts.css" />
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/components.css" />
-    <link rel="stylesheet" href="/styles/content-migrated.css" />
+    <link rel="stylesheet" href="/styles/base.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/layout.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/components.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/content.css?v=css-refactor-2" />
+    <link rel="stylesheet" href="/styles/pages.css?v=css-refactor-2" />
     <script defer type="module" src="/scripts/main.js"></script>
   </head>
-  <body class="home-page" data-banner-mode="auto">
+  <body data-banner-mode="auto" data-page="home">
     <header class="site-header">
       <div class="topline" data-i18n="tagline">Wir helfen Katzen in Not</div>
       <div class="header-main">
-        <div class="brand-row">
-          <a class="brand" href="/index.html">
+        <a class="brand" href="/index.html">
             <img alt="Vereinslogo" class="brand__logo" height="62" src="/assets/katzenfreunde.png" width="62" />
           </a>
           <div class="header-controls">
             <button aria-label="Farbmodus wechseln" class="theme-toggle" data-i18n-aria-label="themeAria" data-theme-toggle type="button"></button>
             <button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" data-i18n="menuToggle" data-nav-toggle type="button">Menü</button>
           </div>
-        </div>
         <nav aria-label="Hauptnavigation" class="nav-wrap" data-nav-wrap id="site-nav">
           <ul class="main-nav">
             <li class="is-active">
@@ -118,7 +117,7 @@
     </header>
 
     <main class="page-shell page-shell--with-banner">
-      <article class="rich-content page-content rich-content--home">
+      <article class="rich-content prose page-content rich-content--home">
         <section class="home-intro">
           <div class="home-intro__media">
             <picture
@@ -144,7 +143,7 @@
             <p>Wir handeln dort, wo Tiere sofort Unterstützung brauchen: an Futterstellen, bei Notfällen und in der täglichen Betreuung unserer Schützlinge.</p>
           </div>
         </section>
-        <section class="home-impact schedule-section">
+        <section class="home-impact schedule-section section-divider section-divider--fade" data-reveal="divider">
           <p class="section-kicker">Warum unsere Arbeit wichtig ist</p>
           <h2>Streunerkatzen leiden oft im Verborgenen</h2>
           <p>
