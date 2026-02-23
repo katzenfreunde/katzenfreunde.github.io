@@ -29,6 +29,7 @@
   --accent: #cbbba0;
   --accent-strong: #beae92;
   --accent-hover: #beae92;
+  --selection-text: #232622;
 
   /* Effects */
   --shadow-soft: 0 16px 40px rgba(35, 38, 34, 0.1);
@@ -78,6 +79,7 @@ html[data-theme="dark"] {
   --accent: #b7aa93;
   --accent-strong: #c5b8a1;
   --accent-hover: #c5b8a1;
+  --selection-text: #161718;
 
   /* Assets */
   --paw-icon: url("../assets/icons/dark/paw.svg");
@@ -100,6 +102,19 @@ html[data-theme="dark"] {
 * {
   scrollbar-color: var(--line-strong) transparent;
   scrollbar-width: thin;
+}
+
+*::selection {
+  background-color: var(--accent);
+  color: var(--selection-text);
+  text-shadow: none;
+  -webkit-text-fill-color: var(--selection-text);
+}
+
+*::-moz-selection {
+  background-color: var(--accent);
+  color: var(--selection-text);
+  text-shadow: none;
 }
 
 *::-webkit-scrollbar {
