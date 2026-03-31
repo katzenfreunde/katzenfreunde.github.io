@@ -64,5 +64,9 @@
     object-fit: contain;
     background: #fff;
   }
+
+  body[data-page="termine"] .donation-highlight {
+    grid-template-columns: 1fr;
+  }
 }
 

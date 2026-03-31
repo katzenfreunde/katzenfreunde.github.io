@@ -30,6 +30,7 @@
         <link rel="canonical" href="/index.html" />
     <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
 
+    <link as="image" href="/assets/media/flyer.jpg" rel="preload" />
     <link as="image" href="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg" rel="preload" />
     <link rel="preload" href="/styles/fonts.css" as="style" />
     <link rel="stylesheet" href="/styles/fonts.css" />
@@ -121,7 +122,29 @@
 
     <main class="page-shell page-shell--with-banner">
       <article class="rich-content prose page-content rich-content--home">
-        <section class="home-intro">
+        <section aria-labelledby="home-announcement-title" class="home-announcement">
+          <h2 class="visually-hidden" id="home-announcement-title">Aktueller Flyer</h2>
+          <div class="home-announcement__poster">
+            <figure class="announcement-poster">
+              <a class="announcement-poster__link" href="/assets/media/flyer.jpg" rel="noopener noreferrer" target="_blank">
+                <img
+                  alt="Flyer zum 1. Mai Wurst- und Getraenkestopp zugunsten der Katzenfreunde Bietigheim-Bissingen"
+                  decoding="async"
+                  fetchpriority="high"
+                  height="739"
+                  loading="eager"
+                  sizes="(max-width: 980px) 100vw,
+                      34vw"
+                  src="/assets/media/flyer.jpg"
+                  width="665" />
+              </a>
+              <a aria-label="Flyer herunterladen" class="announcement-poster__download" href="/assets/media/flyer.jpg" download>
+                <span aria-hidden="true" class="announcement-poster__download-icon"></span>
+              </a>
+            </figure>
+          </div>
+        </section>
+        <section class="home-intro termine-details-divider section-divider section-divider--solid">
           <div class="home-intro__media">
             <picture
               ><img
