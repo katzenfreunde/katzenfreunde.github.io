@@ -150,6 +150,13 @@ function setupNavigation() {
           href: "https://www.facebook.com/katzenfreundebibi/",
           external: true,
         },
+        {
+          kind: "link",
+          icon: "brand-instagram",
+          label: "Instagram",
+          href: "https://www.instagram.com/katzenfreunde_bietigheim/",
+          external: true,
+        },
       ];
 
       quickItems.forEach((item) => {

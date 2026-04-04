@@ -1100,6 +1100,9 @@ html[data-theme="dark"] .announcement-poster__download-icon {
   position: relative;
   isolation: isolate;
   overflow: visible;
+  background: var(--paypal-blue);
+  border-color: var(--paypal-blue);
+  color: #f6f4ed;
 }
 
 .btn--paypal::before,
@@ -1126,6 +1129,9 @@ html[data-theme="dark"] .announcement-poster__download-icon {
 
 .btn--paypal:hover,
 .btn--paypal:focus-visible {
+  background: var(--paypal-blue);
+  border-color: var(--paypal-blue);
+  color: #f6f4ed;
   animation: paypal-button-beat 1.45s ease-out;
 }
 

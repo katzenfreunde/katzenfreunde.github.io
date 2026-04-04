@@ -29,6 +29,7 @@
   --accent: #cbbba0;
   --accent-strong: #beae92;
   --accent-hover: #beae92;
+  --paypal-blue: #0079C1;
   --selection-text: #232622;
 
   /* Effects */
@@ -79,6 +80,7 @@ html[data-theme="dark"] {
   --accent: #b7aa93;
   --accent-strong: #c5b8a1;
   --accent-hover: #c5b8a1;
+  --paypal-blue: #00457C;
   --selection-text: #161718;
 
   /* Assets */
