@@ -1,4 +1,5 @@
-﻿@layer overrides {
+/* Copyright (c) Nohuto (N.B.) */
+@layer overrides {
   .page-content.rich-content--home {
     max-width: var(--container-xl);
   }

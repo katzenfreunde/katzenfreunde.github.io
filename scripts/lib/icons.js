@@ -1,3 +1,4 @@
+// Copyright (c) Nohuto (N.B.)
 import { qsa } from "./dom.js";
 
 export function iconFolderForTheme(theme) {

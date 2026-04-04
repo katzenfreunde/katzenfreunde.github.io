@@ -1,4 +1,5 @@
-﻿export function copyText(textToCopy) {
+// Copyright (c) Nohuto (N.B.)
+export function copyText(textToCopy) {
   if (!textToCopy) return Promise.reject(new Error("no text"));
 
   if (navigator.clipboard && navigator.clipboard.writeText) {

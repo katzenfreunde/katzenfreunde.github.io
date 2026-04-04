@@ -1,3 +1,4 @@
+/* Copyright (c) Nohuto (N.B.) */
 @layer layout {
   body[data-banner-mode="none"] .page-banner[data-auto-banner] {
     display: none;

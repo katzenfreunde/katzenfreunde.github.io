@@ -1,3 +1,4 @@
+// Copyright (c) Nohuto (N.B.)
 import { qs, qsa, on, delegate } from "./lib/dom.js";
 import { applyThemeIcons } from "./lib/icons.js";
 import { copyText } from "./lib/copy.js";

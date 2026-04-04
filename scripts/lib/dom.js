@@ -1,3 +1,4 @@
+// Copyright (c) Nohuto (N.B.)
 export function qs(selector, root = document) {
   return root.querySelector(selector);
 }

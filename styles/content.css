@@ -1,3 +1,4 @@
+/* Copyright (c) Nohuto (N.B.) */
 @layer content {
   :where(.prose, .rich-content) {
     --prose-flow-space: 0.72rem;
