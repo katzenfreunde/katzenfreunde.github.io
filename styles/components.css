@@ -1398,103 +1398,28 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   color: var(--muted);
 }
 
-.term-calendar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 0.8rem;
-  margin-top: 0.72rem;
-}
-
-.term-month {
+.termine-flyer {
+  margin: 0.72rem auto 0;
+  width: min(100%, 420px);
+  padding: 0.38rem;
   border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--surface-soft);
-  padding: 0.72rem;
-}
-
-.term-month__head h3 {
-  margin: 0 0 0.2rem;
-}
-
-.term-month__weekdays,
-.term-month__days {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.25rem;
-}
-
-.term-month__weekdays {
-  margin-top: 0.55rem;
-}
-
-.term-month__weekdays li {
-  text-align: center;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--muted);
-}
-
-.term-month__day {
-  min-height: 2.4rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0.25rem 0.3rem;
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--surface);
+  box-shadow: var(--shadow-soft);
 }
 
-.term-month__day-number {
-  font-size: 0.82rem;
-  line-height: 1;
+.termine-flyer__link {
+  display: block;
+  line-height: 0;
+  border-radius: 6px;
 }
 
-.term-month__day.is-empty {
-  border-style: dashed;
-  opacity: 0.45;
-  background: transparent;
-}
-
-.term-month__day--event {
-  border-color: var(--line-strong);
-  background: var(--accent);
-}
-
-.term-month__day--event .term-month__day-number {
-  color: var(--brand-strong);
-  font-weight: 700;
-}
-
-.term-month__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--brand);
-  margin-left: 0.22rem;
-  margin-top: 0.04rem;
-}
-
-.term-month__events {
-  list-style: none;
-  margin: 0.6rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.34rem;
-}
-
-.term-month__events li {
-  display: grid;
-  gap: 0.08rem;
-  border-top: 1px solid var(--line);
-  padding-top: 0.42rem;
-}
-
-.term-month__events strong {
-  color: var(--brand-strong);
+.termine-flyer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid rgba(190, 174, 146, 0.78);
 }
 
 .termine-notes {
@@ -2086,10 +2011,6 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 
   .home-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .term-calendar {
-    grid-template-columns: 1fr;
   }
 
   .link-gallery--three {

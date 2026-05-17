@@ -32,17 +32,7 @@ const text = {
   termHeroTitle: "Termine im Überblick",
   termHeroText:
     "Alle aktuellen Flohmarkt- und Aktionstermine finden Sie hier gesammelt. Bei kurzfristigen Änderungen kontaktieren Sie uns bitte direkt.",
-  termLocation: "Ort",
-  termTime: "Zeit",
-  termHint: "Hinweis",
-  termLocationVal: "Ku(h)riosum am Kronenplatz, Bietigheim-Bissingen",
-  termTimeVal: "Samstags ab 10:00 Uhr (laut Terminliste)",
-  termHintVal: "Termine können sich kurzfristig ändern.",
-  termDatesTitle: "Flohmarkttermine 2022",
-  termDatesText: "Alle Flohmarkttermine beginnen samstags um 10:00 Uhr und enden gegen 14:00 Uhr.",
-  termNov: "05. November",
-  termDec: "03. Dezember",
-  termDateTime: "Samstag, 10:00 - 14:00 Uhr",
+  termDatesTitle: "Flohmarkttermine 2026",
   termInfoTitle: "Wichtige Hinweise",
   termInfoText:
     "Der Erlös des Flohmarkts kommt ausschließlich dem Tierschutz zugute. Mitgliedsbeiträge und Spenden allein reichen für die medizinische Versorgung unserer Pfleglinge nicht aus.",
