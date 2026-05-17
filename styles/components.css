@@ -1307,19 +1307,12 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   content: none;
 }
 
-.section-divider.is-visible::before,
 .section-divider.section-underline-visible::before,
-.schedule-section.is-visible::before,
 .schedule-section.section-underline-visible::before,
-.toc-card.is-visible::before,
 .toc-card.section-underline-visible::before,
-.activity-overview.is-visible::before,
 .activity-overview.section-underline-visible::before,
-.activity-section-divider.is-visible::before,
 .activity-section-divider.section-underline-visible::before,
-.termine-details-divider.is-visible::before,
 .termine-details-divider.section-underline-visible::before,
-.membership-docs.is-visible::before,
 .membership-docs.section-underline-visible::before {
   transform: scaleX(1);
   opacity: 1;
@@ -1348,19 +1341,12 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   transform: translateX(-50%) rotate(270deg) scale(0.92);
 }
 
-.section-divider.is-visible::after,
 .section-divider.section-underline-visible::after,
-.schedule-section.is-visible::after,
 .schedule-section.section-underline-visible::after,
-.toc-card.is-visible::after,
 .toc-card.section-underline-visible::after,
-.activity-overview.is-visible::after,
 .activity-overview.section-underline-visible::after,
-.activity-section-divider.is-visible::after,
 .activity-section-divider.section-underline-visible::after,
-.termine-details-divider.is-visible::after,
 .termine-details-divider.section-underline-visible::after,
-.membership-docs.is-visible::after,
 .membership-docs.section-underline-visible::after {
   left: calc(100% - var(--section-divider-right-gap, 0px) + var(--section-paw-end-offset, 0px));
   opacity: 0.92;
@@ -1937,20 +1923,6 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
   transform: translateY(0);
 }
 
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(22px);
-  transition:
-    opacity 520ms ease,
-    transform 520ms ease;
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .paw-click {
   position: fixed;
   width: 18px;
@@ -1986,12 +1958,6 @@ html[data-theme="dark"] .nav-dropdown-toggle::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
   .paw-click {
     display: none !important;
   }

@@ -704,108 +704,42 @@ function setupPdfModal() {
 
 }
 
-function setupReveal() {
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  const revealTargets = qsa(
-    "main section, .hero__card, .activity-card, .date-card, .bank-item, .donation-impact-card, .media-tile, .home-intro, .home-impact, .home-cta"
-  ).filter((el) => !el.closest("[data-pdf-modal]"));
-
-  if (!revealTargets.length || !("IntersectionObserver" in window)) return;
-
-  revealTargets.forEach((el, idx) => {
-    if (!el.hasAttribute("data-reveal")) {
-      el.setAttribute("data-reveal", "");
-    }
-
-    const siblings = el.parentElement
-      ? Array.from(el.parentElement.children).filter(
-          (node) => node.hasAttribute && node.hasAttribute("data-reveal")
-        )
-      : [];
-
-    const siblingIndex = siblings.indexOf(el);
-    const delay = siblingIndex > -1 ? Math.min(siblingIndex, 5) * 60 : (idx % 4) * 45;
-    el.style.setProperty("--reveal-delay", `${delay}ms`);
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          window.requestAnimationFrame(() => {
-            entry.target.classList.add("is-visible");
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.14,
-      rootMargin: "0px 0px -8% 0px",
-    }
-  );
-
-  revealTargets.forEach((el) => observer.observe(el));
+function setupHeaderScroll() {
+  // Keep header behavior stable across devices (no compact-on-scroll mode).
+  body.classList.remove("is-scrolled");
 }
 
-function observeOnce(targets, onIntersect, options = {}) {
+function setupSectionDividers() {
+  const targets = qsa(
+    ".section-divider, .schedule-section, .toc-card, .activity-overview, .activity-section-divider, .termine-details-divider, .membership-docs"
+  ).filter((el) => !el.classList.contains("section-divider-none"));
+
   if (!targets.length) return;
 
-  const threshold = options.threshold ?? 0.12;
-  const rootMargin = options.rootMargin ?? "0px 0px -10% 0px";
+  const activate = (el) => {
+    el.classList.add("section-underline-visible");
+  };
 
-  if (!("IntersectionObserver" in window)) {
-    targets.forEach((el, idx) => onIntersect(el, idx));
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+    targets.forEach(activate);
     return;
   }
 
-  const order = new Map(targets.map((el, idx) => [el, idx]));
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const idx = order.get(entry.target) ?? 0;
-        window.requestAnimationFrame(() => onIntersect(entry.target, idx));
+        activate(entry.target);
         observer.unobserve(entry.target);
       });
     },
-    { threshold, rootMargin }
+    {
+      threshold: 0.18,
+      rootMargin: "0px 0px -12% 0px",
+    }
   );
 
   targets.forEach((el) => observer.observe(el));
-}
-
-function readMsVar(el, name) {
-  const value = (el.style.getPropertyValue(name) || "").trim();
-  const parsed = Number.parseFloat(value);
-  return Number.isFinite(parsed) ? parsed : 0;
-}
-
-function setupSectionUnderlines() {
-  const targets = qsa('[data-reveal="divider"], .js-reveal-divider');
-  if (!targets.length) return;
-
-  const activate = (el, idx = 0) => {
-    if (el.classList.contains("is-visible") || el.classList.contains("section-underline-visible")) return;
-    const revealDelay = readMsVar(el, "--reveal-delay");
-    const stagger = Math.min(idx, 4) * 35;
-    const delay = revealDelay + 120 + stagger;
-    window.setTimeout(() => {
-      el.classList.add("is-visible");
-      el.classList.add("section-underline-visible");
-    }, delay);
-  };
-
-  observeOnce(targets, activate, {
-    threshold: 0.18,
-    rootMargin: "0px 0px -12% 0px",
-  });
-}
-
-function setupHeaderScroll() {
-  // Keep header behavior stable across devices (no compact-on-scroll mode).
-  body.classList.remove("is-scrolled");
 }
 
 function setupHorizontalLock() {
@@ -935,8 +869,7 @@ function boot() {
   setupHeaderScroll();
   setupHorizontalLock();
   applyBannerImage();
-  setupReveal();
-  setupSectionUnderlines();
+  setupSectionDividers();
   setupClickPaw();
 }
 
