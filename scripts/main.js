@@ -17,6 +17,7 @@ const text = {
   navReports: "Berichte",
   navDates: "Termine",
   navActivities: "Unsere Aktivitäten",
+  navPlacement: "Vermittlung",
   navMembership: "Mitgliedschaft",
   navDonate: "Spenden",
   navTips: "Tipps",
@@ -422,7 +423,7 @@ function readSystemTheme() {
 function bindSystemThemeSync(onChange) {
   const systemThemeQuery =
     window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-  if (!systemThemeQuery) return () => {};
+  if (!systemThemeQuery) return () => { };
 
   const handleChange = () => {
     if (readThemeOverride()) return;
@@ -439,7 +440,7 @@ function bindSystemThemeSync(onChange) {
     return () => systemThemeQuery.removeListener(handleChange);
   }
 
-  return () => {};
+  return () => { };
 }
 
 function resolveTheme() {
@@ -485,7 +486,7 @@ function initTheme() {
 
 function setupToasts() {
   const toast = qs("[data-toast]");
-  if (!toast) return () => {};
+  if (!toast) return () => { };
 
   let timer = null;
   return (message) => {
@@ -709,39 +710,6 @@ function setupHeaderScroll() {
   body.classList.remove("is-scrolled");
 }
 
-function setupSectionDividers() {
-  const targets = qsa(
-    ".section-divider, .schedule-section, .toc-card, .activity-overview, .activity-section-divider, .termine-details-divider, .membership-docs"
-  ).filter((el) => !el.classList.contains("section-divider-none"));
-
-  if (!targets.length) return;
-
-  const activate = (el) => {
-    el.classList.add("section-underline-visible");
-  };
-
-  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
-    targets.forEach(activate);
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        activate(entry.target);
-        observer.unobserve(entry.target);
-      });
-    },
-    {
-      threshold: 0.18,
-      rootMargin: "0px 0px -12% 0px",
-    }
-  );
-
-  targets.forEach((el) => observer.observe(el));
-}
-
 function setupHorizontalLock() {
   const isCoarsePointer =
     window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
@@ -869,7 +837,6 @@ function boot() {
   setupHeaderScroll();
   setupHorizontalLock();
   applyBannerImage();
-  setupSectionDividers();
   setupClickPaw();
 }
 

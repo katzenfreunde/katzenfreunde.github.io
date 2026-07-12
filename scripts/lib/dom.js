@@ -8,7 +8,7 @@ export function qsa(selector, root = document) {
 }
 
 export function on(target, event, handler, options) {
-  if (!target) return () => {};
+  if (!target) return () => { };
   target.addEventListener(event, handler, options);
   return () => target.removeEventListener(event, handler, options);
 }

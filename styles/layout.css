@@ -70,7 +70,7 @@
     padding: 0.2rem 0;
   }
 
-  .page-content > * + * {
+  .page-content>*+* {
     margin-top: 2.1rem;
   }
 
